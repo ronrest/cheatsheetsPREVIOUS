@@ -1,0 +1,140 @@
+@import 'https://fonts.googleapis.com/css?family=Dosis:200,400,700';
+
+/* ========================================================================== */
+/*                                                                    GENERIC */
+/* ========================================================================== */
+body {
+    color: #000909;
+    /*font-size: 90%;*/
+    font-family: Helvetica, Sans;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.body{
+    margin: 50 auto;
+    width: 75%;
+    clear:both;
+}
+
+.main{
+    top: 50px;
+}
+/* ========================================================================== */
+/*                                                              GENERIC LINKS */
+/* ========================================================================== */
+a{
+    text-decoration: none;
+}
+
+a:link, a:visited{
+    color: #1A94D6;
+}
+
+a:hover, a:active{
+    color: #FF8000; /*#808080;*/
+}
+
+
+
+/* ========================================================================== */
+/*                                                                 NAVIGATION */
+/* ========================================================================== */
+nav.main_navigation{
+    background-color: #808080;
+    position: fixed;
+    top:0px;
+    height: 40px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+nav.main_navigation ul{
+    list-style:none;
+    margin: 0 auto;
+}
+
+nav.main_navigation li{
+    float: left;
+    display: inline;
+}
+
+nav.main_navigation a:link, nav.main_navigation a:visited{
+    color: #FFF;
+    display: inline-block;
+    padding: 10px 25px;
+    height: 20px;
+}
+
+.active_navitem a:link,
+.active_navitem a:visited,
+.navitem a:active,
+.navitem a:hover{
+    background-color: #FF8000; /*#04BAE3;*/
+    color: #FFF;
+    text-shadow: none;
+}
+
+/* ========================================================================== */
+/*                                                                    CONTENT */
+/* ========================================================================== */
+.section_container{
+}
+
+.section_content {
+    /*float: left;*/
+    display: flex;
+}
+
+.group_container{
+    padding: 2px 20px 20px 20px;
+    background-color: #f0f0f0;
+    line-height: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    /*float: left;*/
+    order: 1;
+    margin: 10px;
+}
+
+
+.post_info{
+    color: #999999;
+    font-style: italic;
+    font-size: 75%;
+}
+
+
+/* ========================================================================== */
+/*                                                                     FOOTER */
+/* ========================================================================== */
+.main_footer {
+    float: left;
+    width: 100%;
+    background-color: #808080;
+    margin-bottom: 2%;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.main_footer p{
+    width: 92%;
+    color: #fff;
+    margin: 2% auto;
+}
+
+/* ========================================================================== */
+/*                                                                            */
+/* ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Dosis', sans-serif;
+    /*font-family: 'Droid Serif', serif;*/
+	font-weight: 700;
+    color: #307EC7;
+}
