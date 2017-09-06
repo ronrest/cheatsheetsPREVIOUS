@@ -201,3 +201,7 @@ def generate_html(sections, out_dir, title="My Cheatsheets"):
 
 
 
+if __name__ == '__main__':
+    sections_file = "sections.cht"
+    index_title, out_dir, sections = parse_index_sections_file(sections_file)
+    generate_html(sections, out_dir=out_dir, title=index_title)
