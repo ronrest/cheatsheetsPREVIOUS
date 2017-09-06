@@ -140,3 +140,11 @@ def parse_index_sections_file(file):
     return title, out_dir, sections
 
 
+# ==============================================================================
+#                                                                     PARSE_PAGE
+# ==============================================================================
+def parse_page(source_file, out_file):
+    # TODO: Parse the source_file and create its own html page
+    pass
+
+
