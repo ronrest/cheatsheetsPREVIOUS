@@ -148,3 +148,56 @@ def parse_page(source_file, out_file):
     pass
 
 
+# ==============================================================================
+#                                                            CREATE HTML CONTENT
+# ==============================================================================
+def generate_html(sections, out_dir, title="My Cheatsheets"):
+    """ Given a list of dictionaries specifying the sections and groups and
+        items, and an output dir, it generates the necessary html
+    """
+    # TODO: Set filepaths of template to be relative to this script file
+    #       explicitly.
+    index_title = title
+    html_template = file2str("templates/index.html")
+    nav_items_template = file2str("templates/nav_item.html")
+    section_template = file2str("templates/section.html")
+    group_template = file2str("templates/group.html")
+    group_item_template = file2str("templates/group_item.html")
+
+    # Iterate through each section
+    nav_items_str = ""
+    all_sections_str = ""
+    for section in sections:
+        section_title = section["title"]
+        # print(section_title)
+
+        # Iterate through each group in section
+        all_groups_str = ""
+        for group in section["groups"]:
+            group_title = group["title"]
+            # print(" -", group_title)
+
+            # Iterate through each item in group
+            all_items_str = ""
+            for source_file, out_file in group["files"]:
+                item_title = os.path.basename(source_file).capitalize()
+                #print("   - ", item_title, "--", source_file)
+
+                # Parse the source_file and create its own html page
+                parse_page(source_file, out_file)
+
+                all_items_str += "\n" + group_item_template.format(item_url=out_file, item_title=item_title)
+
+            all_groups_str += "\n" + group_template.format(group_title=group_title, group_items=all_items_str)
+        all_sections_str += "\n" + section_template.format(section_title=section_title, section_id=section_title, section_content=all_groups_str)
+        nav_items_str += "\n" + nav_items_template.format(section_title=section_title, section_id=section_title)
+
+    html_str = html_template.format(index_title=index_title, sections=all_sections_str, nav_items=nav_items_str)
+
+    # Move files to apropriate direcoty
+    maybe_make_pardir(out_dir)
+    str2file(html_str, os.path.join(out_dir, "index.html"))
+    shutil.copy2("static/style.css", os.path.join(out_dir, "style.css"))
+
+
+
