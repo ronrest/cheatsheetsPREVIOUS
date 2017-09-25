@@ -1,0 +1,65 @@
+Awesome Document Title
+
+//// ###########################################################################
+                                                            **Old Style header**
+//// ###########################################################################
+code #### explanation with backslash in the  \ middle
+code with blank explanation ####
+np.array([[1,2],[3,4]], dtype=np.float32)   #### Explanation 1.
+
+<html><body>raw html code</body></html>#### Explanation 2 line 1. \\\\
+explanation 2 line 2
+explanation 2 line 3 .
+
+code                #### Some html code in explanation. <br><b>bold</b> <a href="https://www.tensorflow.org/api_docs/python/tf/losses/get_losses">URL link</a>
+
+<h2>Sub heading title</h2>
+Paragraph of text that should stand on its own.
+Still should continue from last line, just like in markdown.
+And yet more on the same paragerraph.
+
+Paragraph 2 here.
+Sentence two of para 2.
+'quotes', "double quotes"    #### quotes explanation
+`code quotes` in code        #### `code quotes` in explanation
+`triple code quotes` in code #### `triple code quotes` in explanation
+
+MULTILINE
+#===============================================================================
+#                                                          Multiline code header
+#===============================================================================
+################################################################################
+#                          Multiline code header
+################################################################################
+something in code
+
+# this is still in code
+########################### still in code
+still in code
+
+a = tf.constant([[0.35, 0.40, 0.25]]) # 0
+/MULTILINE #### Create variables whose initial value is dependent on the value of other
+
+
+MULTILINE
+Multi lines of code with multiline explanation
+line 2
+line 3
+/MULTILINE #### Multiline explanation \\\\
+line 2 of explanation
+line 3 of explanation ####
+
+
+================================================================================ ####
+                                                  **Old Style Header 2**
+//// #######################################################################
+Possible subheader style
+----------------------
+code #### explanation
+
+
+
+//// ##########################################################################
+////                                                       New style Headers
+//// ###########################################################################
+code #### explanation
