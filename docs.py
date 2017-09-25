@@ -183,7 +183,7 @@ def generate_html(sections, out_dir, title="My Cheatsheets"):
                 item_title = os.path.basename(source_file).capitalize()
                 #print("   - ", item_title, "--", source_file)
 
-                # Parse the source_file and create its own html page
+                # PARSE PAGE - from source file to its own html page
                 parse_page(source_file, out_file)
 
                 all_items_str += "\n" + group_item_template.format(item_url=out_file, item_title=item_title)
