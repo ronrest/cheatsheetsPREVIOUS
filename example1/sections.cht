@@ -1,0 +1,15 @@
+My Super Awesome Cheatchseets
+/tmp/test2
+
+Linear Algebra
+    Vectors
+        linalg/simple_vectors
+        linalg/vector_dot_products
+    Matrices
+        linalg/simple_matrices
+        linalg/matrix_multiplication
+        linalg/matrix_and_vectors
+Algebra
+    Basics
+        alg/polynomials
+        alg/quadratic_functions
