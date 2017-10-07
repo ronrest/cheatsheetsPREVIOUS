@@ -2,6 +2,7 @@ from __future__ import print_function, division, unicode_literals
 import shutil
 import re
 import os
+from jinja2 import Environment, select_autoescape, FileSystemLoader # PackageLoader
 
 
 # ==============================================================================
@@ -266,4 +267,17 @@ def generate_html(sections, out_dir, title="My Cheatsheets"):
 if __name__ == '__main__':
     sections_file = "example1/sections.cht"
     index_title, out_dir, sections = parse_index_sections_file(sections_file)
-    generate_html(sections, out_dir=out_dir, title=index_title)
+    # generate_html(sections, out_dir=out_dir, title=index_title)
+
+    # Jinja Templating Environment
+    env = Environment(
+        loader=FileSystemLoader('templates', encoding='utf-8'),
+        autoescape=select_autoescape(['html', 'xml'])
+    )
+
+    # GENERATE INDEX PAGE
+    index_title, out_dir, sections = parse_index_sections_file(sections_file)
+    template = env.get_template('index.html')
+    index_page = template.render(index_title=index_title, nav_items="NAV ITEMS", sections=sections)
+    str2file(index_page, os.path.join(out_dir, "index.html"))
+
