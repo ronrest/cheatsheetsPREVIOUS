@@ -307,3 +307,6 @@ if __name__ == '__main__':
     index_page = template.render(index_title=index_title, sections=sections)
     str2file(index_page, os.path.join(out_dir, "index.html"))
 
+    
+# TODO: cheatsheets section file should have item names, not just filenames
+# eg:  Dot Protuct  |||| linalg/dot_product
