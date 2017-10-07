@@ -108,35 +108,57 @@ def parse_index_sections_file(file):
     Accessing the source file of i'th item    = sections[sid]["groups"][gid]["files"][iid][0]
     Accessing the output file of i'th item    = sections[sid]["groups"][gid]["files"][iid][1]
     """
-    n_header_lines = 2
-    s_raw = file2str(file).splitlines()
-    title = s_raw[0].strip()
-    out_dir = s_raw[1].strip()
+    n_header_lines = 2  # number of lines dedicated to metadata in cht file
+    project_dir = os.path.dirname(file)
 
-    line = s_raw[2]
+    # Split the file into lines
+    lines = file2str(file).splitlines()
+
+    # Cheatsheets Main title
+    title = lines[0].strip()
+
+    # OUTPUT DIRECTORY - removing redundant separators and handling path
+    # relative to the project directory.
+    out_dir = lines[1].strip()
+    out_dir = os.path.normpath(os.path.join(project_dir, out_dir))
 
     sections = []
-    for line in s_raw[n_header_lines:]:
+    for line in lines[n_header_lines:]:
+        # Match line to either a section title, a group title, or a group item
         section_match = re.search("^(\S+.*)", line)
         group_match = re.search("^\s{4}(\S+.*)", line)
         group_item_match = re.search("^\s{8}(\S+.*)", line)
 
+        # IS A SECTION TITLE
         if section_match:
+            # Get the section title, and add a section to the dict
             section_title = section_match.groups()[0]
             sections.append({"title": section_title, "groups":[]})
+
+        # IS A GROUP TITLE
         elif group_match:
+            # Get the group title, and append a group to the dict
             group_title = group_match.groups()[0]
             sections[-1]["groups"].append({"title": group_title, "files": []})
+
+        # IS A GROUP ITEM
         elif group_item_match:
+            # Get the relative filepath to the source file for this item
             source_file = group_item_match.groups()[0]
-            sections[-1]["groups"][-1]["files"].append(make_source_output_pair(source_file))
+
+            # Absolute filepaths to source and output file
+            out_file = os.path.normpath(os.path.join(out_dir, source_file+".html"))
+            source_file = os.path.normpath(os.path.join(project_dir, source_file))
+            sections[-1]["groups"][-1]["files"].append((source_file, out_file))
+
+        # Skip over blank lines
         elif line.strip() == "":
             continue
+
+        # Error handling of format
         else:
             assert True, "There is something wrong with the formatting of you cheatsheets file, check the indentation"
 
-    # TODO: Set output dir to be relative to file if it does not start
-    # with a "/"
     return title, out_dir, sections
 
 
@@ -202,6 +224,6 @@ def generate_html(sections, out_dir, title="My Cheatsheets"):
 
 
 if __name__ == '__main__':
-    sections_file = "sections.cht"
+    sections_file = "example1/sections.cht"
     index_title, out_dir, sections = parse_index_sections_file(sections_file)
     generate_html(sections, out_dir=out_dir, title=index_title)
