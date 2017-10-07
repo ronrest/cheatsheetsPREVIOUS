@@ -284,6 +284,9 @@ def prepare_output_dir(out_dir):
     shutil.copy2("static/style.css", os.path.join(out_dir, "style.css"))
 
 
+# ##############################################################################
+#                                                                           MAIN
+# ##############################################################################
 if __name__ == '__main__':
     sections_file = "example1/sections.cht"
     index_title, out_dir, sections = parse_index_sections_file(sections_file)
