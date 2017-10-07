@@ -82,12 +82,12 @@ def parse_index_sections_file(file):
             'files': [
                 # FILE 0
                 {'name': 'simple_vectors',
-                'out_file': '/output/dir/linalg/simple_vectors.html',
+                'out_file': 'linalg/simple_vectors.html',
                 'source_file': '/input/dir/linalg/simple_vectors'},
 
                 # FILE 1
                 {'name': 'vector_dot_products',
-                'out_file': '/output/dir/linalg/vector_dot_products.html',
+                'out_file': 'linalg/vector_dot_products.html',
                 'source_file': '/input/dir/linalg/vector_dot_products'}
                 ]},
 
@@ -96,17 +96,17 @@ def parse_index_sections_file(file):
             'files': [
                 # FILE 0
                 {'name': 'simple_matrices',
-                'out_file': '/output/dir/linalg/simple_matrices.html',
+                'out_file': 'linalg/simple_matrices.html',
                 'source_file': '/input/dir/linalg/simple_matrices'},
 
                 # FILE 1
                 {'name': 'matrix_multiplication',
-                'out_file': '/output/dir/linalg/matrix_multiplication.html',
+                'out_file': 'linalg/matrix_multiplication.html',
                 'source_file': '/input/dir/linalg/matrix_multiplication'},
 
                 # FILE 2
                 {'name': 'matrix_and_vectors',
-                'out_file': '/output/dir/linalg/matrix_and_vectors.html',
+                'out_file': 'linalg/matrix_and_vectors.html',
                 'source_file': '/input/dir/linalg/matrix_and_vectors'}
                 ]}
         ]},
@@ -119,12 +119,12 @@ def parse_index_sections_file(file):
             'files': [
                 # FILE 0
                 {'name': 'polynomials',
-                'out_file': '/output/dir/alg/polynomials.html',
+                'out_file': 'alg/polynomials.html',
                 'source_file': '/input/dir/alg/polynomials'},
 
                 # FILE 1
                 {'name': 'quadratic_functions',
-                'out_file': '/output/dir/alg/quadratic_functions.html',
+                'out_file': 'alg/quadratic_functions.html',
                 'source_file': '/input/dir/alg/quadratic_functions'}
                 ]}
         ]}
@@ -186,8 +186,8 @@ def parse_index_sections_file(file):
             source_file = group_item_match.groups()[0]
             file_name = os.path.basename(source_file)
 
-            # Absolute filepaths to source and output file
-            out_file = os.path.normpath(os.path.join(out_dir, source_file+".html"))
+            # Clean up filepaths to source and output file
+            out_file = os.path.normpath(os.path.join(source_file+".html"))
             source_file = os.path.normpath(os.path.join(project_dir, source_file))
             sections[-1]["groups"][-1]["files"].append({"name":file_name, "source_file":source_file, "out_file":out_file})
 
