@@ -1,8 +1,11 @@
+
             <article class="group_container">
-                <header class="content_header"><h3>{group_title}</h3></header>
+                <header class="content_header"><h3>{{group["title"]}}</h3></header>
                 <content>
                     <ul>
-                        {group_items}
+                        {% for file in group["files"] %}
+                        <li><a href="{{file["out_file"]}}">{{file["name"]}}</a></li>
+                        {% endfor %}
                     </ul>
                 </content>
             </article>
