@@ -295,6 +295,9 @@ if __name__ == '__main__':
         autoescape=select_autoescape(['html', 'xml'])
     )
 
+    # Create necessary file structure for output project
+    prepare_output_dir(out_dir)
+
     # GENERATE INDEX PAGE
     index_title, out_dir, sections = parse_index_sections_file(sections_file)
     template = env.get_template('index.html')
