@@ -11,7 +11,9 @@
     <!-- ====================================================================-->
     <header class="main_header">
         <nav class="main_navigation"><ul>
-            {{nav_items}}
+            {% for section in sections %}
+            <li class="navitem"><a href="#{{section["title"]|lower()|replace(' ', '_')}}">{{ section["title"]|e }}</a></li>
+            {% endfor %}
         </ul></nav>
     </header>
 

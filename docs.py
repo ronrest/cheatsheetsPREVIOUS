@@ -304,6 +304,6 @@ if __name__ == '__main__':
     # GENERATE INDEX PAGE
     index_title, out_dir, sections = parse_index_sections_file(sections_file)
     template = env.get_template('index.html')
-    index_page = template.render(index_title=index_title, nav_items="NAV ITEMS", sections=sections)
+    index_page = template.render(index_title=index_title, sections=sections)
     str2file(index_page, os.path.join(out_dir, "index.html"))
 
