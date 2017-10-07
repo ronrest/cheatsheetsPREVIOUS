@@ -6,6 +6,18 @@ from jinja2 import Environment, select_autoescape, FileSystemLoader # PackageLoa
 
 
 # ==============================================================================
+#                                                                 MAYBE_MAKE_DIR
+# ==============================================================================
+def maybe_make_dir(path):
+    """ Checks if a directory path exists on the system, if it does not, then
+        it creates that directory (and any parent directories needed to
+        create that directory)
+    """
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+
+# ==============================================================================
 #                                                              MAYBE_MAKE_PARDIR
 # ==============================================================================
 def maybe_make_pardir(file):
