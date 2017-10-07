@@ -275,6 +275,14 @@ def generate_html(sections, out_dir, title="My Cheatsheets"):
     shutil.copy2("static/style.css", os.path.join(out_dir, "style.css"))
 
 
+# ==============================================================================
+#                                                             PREPARE_OUTPUT_DIR
+# ==============================================================================
+def prepare_output_dir(out_dir):
+    """ Creates the directory structure for the output, including css files """
+    maybe_make_dir(out_dir)
+    shutil.copy2("static/style.css", os.path.join(out_dir, "style.css"))
+
 
 if __name__ == '__main__':
     sections_file = "example1/sections.cht"
